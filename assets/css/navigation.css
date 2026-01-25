@@ -1,0 +1,681 @@
+/* === GLOBAL DESIGN TOKENS === */
+:root {
+    --primary: #059669;
+    --primary-light: #34d399;
+    --primary-glow: rgba(16, 185, 129, 0.3);
+    --accent: #2563eb;
+    --text-dark: #1e293b;
+    --text-gray: #64748b;
+    --text-light: #f8fafc;
+    --bg-white: #ffffff;
+    --bg-off-white: #E3E6E1;
+    --bg-footer: #010101;
+    --trans: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === TOP-LEFT LOGO === */
+.top-left-logo {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 10000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.4);
+    /* Frosted Glass */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.top-left-logo img {
+    height: 55px;
+    /* Default size */
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.top-left-logo:hover {
+    background: rgba(255, 255, 255, 0.55);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.top-left-logo:hover img {
+    transform: scale(1.05);
+}
+
+/* === ELITE TOP-RIGHT SUNRAY NAVIGATION (1/4th Circle) === */
+.menu-container {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 10000;
+}
+
+.menu-trigger {
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10001;
+    position: relative;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    /* Premium dark glass */
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.menu-trigger:hover {
+    background: rgba(16, 185, 129, 0.2);
+    transform: scale(1.05);
+}
+
+.hamburger-icon {
+    width: 32px;
+    height: 20px;
+    position: relative;
+}
+
+.hamburger-icon span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #fff !important;
+    /* White for high-contrast on mobile */
+    border-radius: 10px;
+    transition: .25s ease-in-out;
+}
+
+.hamburger-icon span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger-icon span:nth-child(2) {
+    top: 8px;
+    width: 75%;
+    right: 0;
+}
+
+.hamburger-icon span:nth-child(3) {
+    top: 16px;
+}
+
+.sunray-menu {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: none;
+}
+
+.menu-container.active .sunray-menu {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sunray-links {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sunray-links li {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: calc(var(--i) * 0.05s);
+    opacity: 0;
+    transform: translate(0, 0) scale(0);
+}
+
+.menu-container.active .sunray-links li {
+    opacity: 1;
+}
+
+/* Fan-Out Logic (WIDE ARC - Desktop Optimized) */
+.menu-container.active li:nth-child(1) {
+    transform: translate(-220px, -20px) scale(1);
+}
+
+.menu-container.active li:nth-child(2) {
+    transform: translate(-210px, 55px) scale(1);
+}
+
+.menu-container.active li:nth-child(3) {
+    transform: translate(-180px, 120px) scale(1);
+}
+
+.menu-container.active li:nth-child(4) {
+    transform: translate(-135px, 175px) scale(1);
+}
+
+.menu-container.active li:nth-child(5) {
+    transform: translate(-80px, 215px) scale(1);
+}
+
+.menu-container.active li:nth-child(6) {
+    transform: translate(-20px, 240px) scale(1);
+}
+
+.menu-container.active li:nth-child(7) {
+    transform: translate(50px, 250px) scale(1);
+}
+
+/* Support: Pulled up significantly */
+
+.sunray-links li a {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 95px !important;
+    /* Restored Desktop Size */
+    height: 95px !important;
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(60, 60, 60, 0.7)) !important;
+    /* Semi-solid for visibility */
+    backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 50% !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    padding: 10px !important;
+    text-align: center !important;
+}
+
+.sunray-links li a:hover {
+    background: var(--primary) !important;
+    transform: scale(1.1) !important;
+    border-color: var(--primary-light) !important;
+    box-shadow: 0 0 25px var(--primary-glow) !important;
+}
+
+.sunray-links li a i {
+    font-size: 1.4rem !important;
+    margin-bottom: 8px !important;
+    /* Increased spacing for breathing room */
+}
+
+.sunray-links li a span {
+    font-size: 0.7rem !important;
+    /* Slightly larger for clarity */
+    font-weight: 600 !important;
+    /* Refined weight */
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    /* Wide spacing for premium feel */
+}
+
+/* Beams Effect */
+.sunray-beams {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.beam {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200%;
+    height: 120px;
+    background: radial-gradient(ellipse at right, rgba(16, 185, 129, 0.2), transparent 75%);
+    transform-origin: right center;
+    filter: blur(50px);
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.menu-container.active .beam {
+    opacity: 1;
+}
+
+.beam:nth-child(1) {
+    transform: rotate(155deg);
+}
+
+.beam:nth-child(2) {
+    transform: rotate(180deg);
+    transition-delay: 0.1s;
+}
+
+.beam:nth-child(3) {
+    transform: rotate(205deg);
+    transition-delay: 0.2s;
+}
+
+/* Beams are visible on Desktop by default */
+.sunray-beams {
+    display: block;
+}
+
+
+/* === SEISMIC RIPPLE ANIMATION === */
+.exp-btn-round {
+    position: fixed;
+    /* Initial State: Center of Screen */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 65px;
+    height: 65px;
+    background: radial-gradient(circle at 30% 30%, #FCF6BA, #BF953F, #AA771C);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000 !important;
+    font-size: 1.6rem;
+    z-index: 9999;
+    box-shadow: 0 10px 40px rgba(191, 149, 63, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    /* Animation Sequence:
+       1. 0s-7.0s: Hidden (User reads page)
+       2. 7.0s-7.5s: FADE IN MASSIVE
+       3. 7.5s-9.0s: SHRINK to Center
+       4. 9.0s-10.0s: PAUSE at Center
+       5. 10.0s+: SLIDE to Corner
+    */
+    opacity: 0;
+    /* Initially hidden */
+    animation: shrink-and-slide 4s cubic-bezier(0.2, 0.8, 0.2, 1) 7s forwards;
+}
+
+/* Keyframes: Massive -> Center -> Corner */
+@keyframes shrink-and-slide {
+    0% {
+        /* Start Massive & Invisible */
+        width: 300vw;
+        height: 300vw;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20rem;
+        border-radius: 50%;
+        opacity: 0;
+    }
+
+    10% {
+        /* Flash Visible (Massive) */
+        opacity: 1;
+        width: 300vw;
+        height: 300vw;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20rem;
+    }
+
+    50% {
+        /* Shrink to Center (7s to ~9s) - SIZE INCREASED TO 90px */
+        width: 90px;
+        height: 90px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        /* Increased font for bigger button */
+        border-radius: 50%;
+        opacity: 1;
+    }
+
+    75% {
+        /* Pause at Center (~9s to ~10s) */
+        width: 90px;
+        height: 90px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+    }
+
+    100% {
+        /* Slide to Corner (10s+) */
+        width: 90px;
+        height: 90px;
+        left: 30px;
+        top: 85%;
+        transform: translate(0, -50%);
+        font-size: 2rem;
+        opacity: 1;
+    }
+}
+
+/* Creating the Ripple Waves (Standard Continuous) */
+.exp-btn-round::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid rgba(252, 246, 186, 0.6);
+    opacity: 0;
+    z-index: -1;
+    /* Continuous Subtle Ripple */
+    animation: ripple-wave 3s infinite linear;
+    animation-delay: 11s;
+    /* Start AFTER slide is done (7s + 4s) */
+}
+
+@keyframes ripple-wave {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+        border-width: 2px;
+    }
+
+    100% {
+        width: 280%;
+        /* Normal ripple expansion */
+        height: 280%;
+        opacity: 0;
+        border-width: 0px;
+    }
+}
+
+/* === EYE BLINK ANIMATION === */
+.exp-btn-round i {
+    animation: eye-blink 4s infinite;
+    /* Blink every 4 seconds */
+    transform-origin: center;
+}
+
+@keyframes eye-blink {
+
+    0%,
+    48%,
+    52%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    50% {
+        transform: scaleY(0.1);
+    }
+
+    /* Snap shut */
+}
+
+.exp-btn-round:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .sunray-links li a {
+        width: 75px !important;
+        height: 75px !important;
+    }
+}
+
+/* === LARGE SCREEN OPTIMIZATIONS (>1600px) === */
+@media (min-width: 1600px) {
+
+    /* Larger Logo Container */
+    .top-left-logo {
+        padding: 18px;
+        border-radius: 25px;
+    }
+
+    /* Larger Logo Image */
+    .top-left-logo img {
+        height: 75px;
+    }
+
+    /* Larger Experience Button */
+    .exp-btn-round {
+        width: 90px;
+        height: 90px;
+        font-size: 2rem;
+    }
+}
+
+/* === EXPERIENCE CENTER HEADER === */
+.page-header {
+    position: fixed;
+    top: 0;
+    /* Sticked to very top for cleaner bar look */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 999;
+    padding: 15px 0;
+    /* Add padding for the bar */
+
+    /* Default: Transparent (Let the hero image shine!) */
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    box-shadow: none;
+
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+/* Scrolled State (Added via JS) */
+.page-header.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.experience-title {
+    font-size: 3rem;
+    /* Slightly reduced for elegance */
+    font-weight: 700;
+    /* Reduced from 800 */
+    text-transform: capitalize;
+    /* Changed from uppercase to Title Case */
+    letter-spacing: -0.5px;
+    /* Tighter, more modern spacing */
+    margin: 0;
+    display: inline-block;
+
+    /* Brand Blue-Green Gradient Text */
+    background: linear-gradient(135deg, #0ea5e9, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Optional: subtle shadow for depth against dark room */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+
+    /* ENTRANCE ANIMATION */
+    animation: slideDownFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    /* Start hidden */
+    transform: translateY(-20px);
+}
+
+@keyframes slideDownFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === ROOM SELECTOR FIX (Layout Flow) === */
+.selector-tabs {
+    position: relative !important;
+    /* Restore flow to push content down */
+    margin-top: 120px !important;
+    /* INCREASED to clear the new glass header bar */
+    margin-bottom: 20px !important;
+    /* Space above image */
+    z-index: 998;
+    width: auto;
+    max-width: 90%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    /* Centering in flow */
+    left: auto !important;
+    transform: none !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+
+    /* Restore Logo Size (User Request) */
+    .top-left-logo img {
+        height: 75px;
+        /* Increased for better presence */
+        /* Back to default */
+    }
+
+    /* Proper Flow for Mobile Header */
+    .page-header {
+        position: relative;
+        /* Override fixed positioning from desktop! */
+        margin-top: 75px;
+        margin-bottom: 25px;
+        /* INCREASED from 5px to 25px mainly for "minor spacing in the bottom" */
+        text-align: center;
+        width: 100%;
+        background: none;
+        /* No background on mobile, just flow */
+        backdrop-filter: none;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        top: auto;
+
+        pointer-events: auto;
+        /* Allow interaction if needed */
+    }
+
+    .experience-title {
+        font-size: 1.8rem;
+        /* Increased mobile size */
+        position: static;
+        /* Let it flow */
+        transform: none;
+        margin: 0;
+    }
+
+    /* Ensure selector stays hidden or positioned correctly if shown */
+    .selector-tabs {
+        display: none !important;
+        /* Keep hidden to use Drawer */
+    }
+
+    /* Mobile Menu Overhaul: Vertical Cascade */
+    .menu-container.active li:nth-child(1) {
+        transform: translate(-5px, 60px) scale(1);
+    }
+
+    .menu-container.active li:nth-child(2) {
+        transform: translate(-5px, 150px) scale(1);
+    }
+
+    .menu-container.active li:nth-child(3) {
+        transform: translate(-5px, 240px) scale(1);
+    }
+
+    .menu-container.active li:nth-child(4) {
+        transform: translate(-5px, 330px) scale(1);
+    }
+
+    .menu-container.active li:nth-child(5) {
+        transform: translate(-5px, 420px) scale(1);
+    }
+
+    .menu-container.active li:nth-child(6) {
+        transform: translate(-5px, 510px) scale(1);
+    }
+
+    .menu-container.active li:nth-child(7) {
+        transform: translate(-5px, 600px) scale(1);
+    }
+
+    .sunray-links li a {
+        width: 80px !important;
+        /* Smaller icons for mobile */
+        height: 80px !important;
+    }
+
+    .sunray-beams {
+        display: none !important;
+        /* Hide beams on mobile for clarity */
+    }
+}
+
+/* === SHIMMER BUTTON EFFECT === */
+.shimmer-btn {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.shimmer-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.8) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    animation: shimmer-sweep 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer-sweep {
+    0% {
+        left: -100%;
+    }
+
+    20% {
+        left: 200%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
