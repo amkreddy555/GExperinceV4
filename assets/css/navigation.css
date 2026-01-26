@@ -23,33 +23,38 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.4);
-    /* Frosted Glass */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 9px 15px 9px 18px;
+    /* Balanced padding for the new logo */
+    background: rgba(255, 255, 255, 0.08);
+    /* Lighter glass for brand clarity */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    /* Sharper pill corners */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .top-left-logo img {
     height: 55px;
-    /* Default size */
+    /* Increased for the new main_logo.png */
     width: auto;
     object-fit: contain;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .top-left-logo:hover {
-    background: rgba(255, 255, 255, 0.55);
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .top-left-logo:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 /* === ELITE TOP-RIGHT SUNRAY NAVIGATION (1/4th Circle) === */
@@ -287,35 +292,34 @@
     top: 50%;
     transform: translate(-50%, -50%);
 
-    width: 65px;
-    height: 65px;
+    /* Responsive Reveal Variables (Option B) */
+    --exp-size: 90px;
+    --exp-pos-x: 30px;
+    --exp-pos-y: 85%;
+    --exp-fs: 2rem;
+
+    width: var(--exp-size);
+    height: var(--exp-size);
     background: radial-gradient(circle at 30% 30%, #FCF6BA, #BF953F, #AA771C);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #000 !important;
-    font-size: 1.6rem;
+    font-size: var(--exp-fs);
     z-index: 9999;
     box-shadow: 0 10px 40px rgba(191, 149, 63, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.3);
 
-    /* Animation Sequence:
-       1. 0s-7.0s: Hidden (User reads page)
-       2. 7.0s-7.5s: FADE IN MASSIVE
-       3. 7.5s-9.0s: SHRINK to Center
-       4. 9.0s-10.0s: PAUSE at Center
-       5. 10.0s+: SLIDE to Corner
-    */
     opacity: 0;
     /* Initially hidden */
-    animation: shrink-and-slide 4s cubic-bezier(0.2, 0.8, 0.2, 1) 7s forwards;
+    animation: shrink-and-slide 3s cubic-bezier(0.2, 0.8, 0.2, 1) 10s forwards;
 }
 
 /* Keyframes: Massive -> Center -> Corner */
 @keyframes shrink-and-slide {
     0% {
-        /* Start Massive & Invisible */
+        /* Start Massive & Invisible (10s) */
         width: 300vw;
         height: 300vw;
         left: 50%;
@@ -326,48 +330,31 @@
         opacity: 0;
     }
 
-    10% {
-        /* Flash Visible (Massive) */
+    /* Flash Visible */
+    1% {
         opacity: 1;
-        width: 300vw;
-        height: 300vw;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 20rem;
     }
 
     50% {
-        /* Shrink to Center (7s to ~9s) - SIZE INCREASED TO 90px */
-        width: 90px;
-        height: 90px;
+        /* Reach Center (11.5s) */
+        width: var(--exp-size);
+        height: var(--exp-size);
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        font-size: 2rem;
-        /* Increased font for bigger button */
+        font-size: var(--exp-fs);
         border-radius: 50%;
         opacity: 1;
     }
 
-    75% {
-        /* Pause at Center (~9s to ~10s) */
-        width: 90px;
-        height: 90px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2rem;
-    }
-
     100% {
-        /* Slide to Corner (10s+) */
-        width: 90px;
-        height: 90px;
-        left: 30px;
-        top: 85%;
+        /* Slide to Corner (13s) */
+        width: var(--exp-size);
+        height: var(--exp-size);
+        left: var(--exp-pos-x);
+        top: var(--exp-pos-y);
         transform: translate(0, -50%);
-        font-size: 2rem;
+        font-size: var(--exp-fs);
         opacity: 1;
     }
 }
@@ -387,8 +374,8 @@
     z-index: -1;
     /* Continuous Subtle Ripple */
     animation: ripple-wave 3s infinite linear;
-    animation-delay: 11s;
-    /* Start AFTER slide is done (7s + 4s) */
+    animation-delay: 13s;
+    /* Start AFTER slide is done (10s + 3s) */
 }
 
 @keyframes ripple-wave {
@@ -448,13 +435,13 @@
 
     /* Larger Logo Container */
     .top-left-logo {
-        padding: 18px;
-        border-radius: 25px;
+        padding: 9px 15px 9px 18px;
+        border-radius: 15px;
     }
 
     /* Larger Logo Image */
     .top-left-logo img {
-        height: 75px;
+        height: 60px;
     }
 
     /* Larger Experience Button */
@@ -559,10 +546,13 @@
 
 /* Responsive adjustment */
 @media (max-width: 768px) {
+    .top-left-logo {
+        padding: 3px 9px 3px 10px;
+    }
 
     /* Restore Logo Size (User Request) */
     .top-left-logo img {
-        height: 75px;
+        height: 55px;
         /* Increased for better presence */
         /* Back to default */
     }
@@ -603,79 +593,64 @@
         /* Keep hidden to use Drawer */
     }
 
-    /* Mobile Menu Overhaul: Vertical Cascade */
+    /* Mobile Menu Overhaul: Vertical Cascade (Compact for Responsiveness) */
     .menu-container.active li:nth-child(1) {
-        transform: translate(-5px, 60px) scale(1);
+        transform: translate(-5px, 55px) scale(1);
     }
 
     .menu-container.active li:nth-child(2) {
-        transform: translate(-5px, 150px) scale(1);
+        transform: translate(-5px, 130px) scale(1);
     }
 
     .menu-container.active li:nth-child(3) {
-        transform: translate(-5px, 240px) scale(1);
+        transform: translate(-5px, 205px) scale(1);
     }
 
     .menu-container.active li:nth-child(4) {
-        transform: translate(-5px, 330px) scale(1);
+        transform: translate(-5px, 280px) scale(1);
     }
 
     .menu-container.active li:nth-child(5) {
-        transform: translate(-5px, 420px) scale(1);
+        transform: translate(-5px, 355px) scale(1);
     }
 
     .menu-container.active li:nth-child(6) {
-        transform: translate(-5px, 510px) scale(1);
+        transform: translate(-5px, 430px) scale(1);
     }
 
     .menu-container.active li:nth-child(7) {
-        transform: translate(-5px, 600px) scale(1);
+        transform: translate(-5px, 505px) scale(1);
     }
 
     .sunray-links li a {
-        width: 80px !important;
-        /* Smaller icons for mobile */
-        height: 80px !important;
+        width: 70px !important;
+        /* More compact circles for mobile */
+        height: 70px !important;
+        padding: 5px !important;
+    }
+
+    .sunray-links li a i {
+        font-size: 1.1rem !important;
+        /* Scaled down icons */
+        margin-bottom: 4px !important;
+    }
+
+    .sunray-links li a span {
+        font-size: 0.6rem !important;
+        /* Sharper text */
+        letter-spacing: 1px !important;
     }
 
     .sunray-beams {
         display: none !important;
         /* Hide beams on mobile for clarity */
     }
-}
 
-/* === SHIMMER BUTTON EFFECT === */
-.shimmer-btn {
-    position: relative !important;
-    overflow: hidden !important;
-}
-
-.shimmer-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(to right,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.8) 50%,
-            rgba(255, 255, 255, 0) 100%);
-    transform: skewX(-25deg);
-    animation: shimmer-sweep 3s infinite;
-    pointer-events: none;
-}
-
-@keyframes shimmer-sweep {
-    0% {
-        left: -100%;
-    }
-
-    20% {
-        left: 200%;
-    }
-
-    100% {
-        left: 200%;
+    /* Compact Experience Button (Responsive Option B) */
+    .exp-btn-round {
+        --exp-size: 75px;
+        --exp-pos-x: 25px;
+        --exp-pos-y: 88%;
+        --exp-fs: 1.6rem;
     }
 }

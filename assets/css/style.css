@@ -91,7 +91,7 @@ img {
     background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
     -webkit-clip-path: polygon(0 100%, 100% 0, 100% 100%);
     clip-path: polygon(0 100%, 100% 0, 100% 100%);
-    z-index: 1;
+    z-index: 11;
     pointer-events: none;
 }
 
@@ -104,6 +104,8 @@ img {
     width: 100%;
     height: 100%;
     background: var(--slant-bg, var(--bg-off-white));
+    /* Pull the background slightly up to close any sub-pixel gaps */
+    margin-top: -1px;
     clip-path: inherit;
     -webkit-clip-path: inherit;
     z-index: 1;
@@ -190,22 +192,39 @@ img {
     align-items: center;
 }
 
-.loader-logo {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--text-dark);
-    letter-spacing: -1px;
-    margin-bottom: 15px;
+.loader-img-box {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: loader-pulse 2s infinite ease-in-out;
 }
 
-.loader-logo span {
-    color: var(--primary);
+.loader-img {
+    height: 160px;
+    /* Increased for more presence */
+    width: auto;
+    object-fit: contain;
+}
+
+@keyframes loader-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
 }
 
 .loader-line {
     width: 0;
-    height: 4px;
-    background: var(--primary);
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
     border-radius: 2px;
     animation: load 1.5s forwards ease-in-out;
 }
@@ -216,7 +235,8 @@ img {
     }
 
     100% {
-        width: 150px;
+        width: 200px;
+        /* Balanced with 160px image */
     }
 }
 
@@ -438,7 +458,7 @@ img {
 .btn-primary {
     background: linear-gradient(135deg, #0ea5e9, #10b981);
     color: #fff;
-    padding: 1.1rem 2.8rem;
+    padding: 0.9rem 2.2rem;
     border-radius: 50px;
     font-weight: 800;
     font-size: 1.1rem;
@@ -490,9 +510,7 @@ img {
    ========================================= */
 .hero {
     min-height: 100vh;
-    /* Ensure it covers at least full viewport */
     height: auto;
-    /* Allow growth if content is tall */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -504,50 +522,71 @@ img {
     margin-top: -80px;
     padding-top: 80px;
     padding-bottom: 100px;
-    /* Reduced to bring stats closer to transition */
-    /* Reserve space for absolute stats */
-    position: relative;
     /* Context for absolute positioning */
     min-height: 109vh;
-    /* Increase height as requested */
-    height: auto;
 }
 
-.hero-slider,
-.hero-slide,
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    transform: scale(1);
+    z-index: 1;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    transform: scale(1.08);
+    transition: opacity 1.5s ease-in-out, transform 15s linear;
+}
+
+/* Option 2: Disable zoom for video slides to keep them "Wide" */
+.hero-slide.video-slide.active {
+    transform: scale(1);
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.video-slide video {
+    width: 100vw;
+    /* Option 3: Force 100vw for wide view */
+    min-width: 100vw;
+    min-height: 100%;
+    height: auto;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-.hero-slider {
-    z-index: -2;
-}
-
-.hero-slide {
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-    transform: scale(1.1);
-}
-
-.hero-slide.active {
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity 1.5s ease, transform 6s ease;
-}
-
-.hero-overlay {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.85) 100%);
-    z-index: -1;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.75) 100%);
+    z-index: 2;
 }
 
 .hero-content {
-    z-index: 2;
+    z-index: 10;
     position: relative;
     max-width: 900px;
     color: #fff;
@@ -602,8 +641,7 @@ img {
     height: 0;
     overflow: visible;
     margin-top: -110px;
-    /* Centered on transition line (half of 220px height) */
-    /* Pull up to overlay the slant line */
+    /* Centered on transition line */
     z-index: 100;
     width: 90%;
     max-width: 1200px;
@@ -612,7 +650,6 @@ img {
     display: flex;
     justify-content: center;
     pointer-events: none;
-    /* Layout overlay only */
 }
 
 /* Updated Stats Card Style for Shield Badges */
@@ -679,11 +716,17 @@ img {
 
 @media (max-width: 768px) {
     .hero {
-        padding: 120px 21.5px 80px 21.5px;
-        /* Reduced bottom padding */
+        padding: 80px 21.5px 80px 21.5px;
+        /* Reverted to standard padding to allow margin-top centering */
         min-height: 100vh;
         height: auto;
         justify-content: center;
+    }
+
+    .hero-content {
+        margin-top: 15vh;
+        /* This specifically shifts the text block relative to the center */
+        margin-bottom: 0rem;
     }
 
     .stats-wrapper {
@@ -747,6 +790,8 @@ section {
     padding: 2rem 5% 140px 5%;
     /* Restore standard rhythm with slant clearance */
     position: relative;
+    /* Ensure sections sit on top of hero slider */
+    z-index: 10;
 }
 
 #solutions {
@@ -1376,24 +1421,7 @@ section {
     transform: translateY(-3px);
 }
 
-.pro-btn {
-    background: linear-gradient(135deg, #0ea5e9, #10b981);
-    color: #fff;
-    padding: 0.8rem 1.8rem;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
-    transition: all 0.3s ease;
-}
 
-.pro-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-    filter: brightness(1.1);
-}
 
 /* =========================================
    13. FOOTER (PITCH BLACK + HIGH CONTRAST)
@@ -1405,6 +1433,8 @@ footer {
     color: #94a3b8;
     position: relative;
     text-align: center;
+    /* Ensure footer sits on top of Support section to show the slant */
+    z-index: 20;
 }
 
 /* Premium Glass Backdrop Overlay */

@@ -1,4 +1,14 @@
-window.onload = () => { setTimeout(() => { document.querySelector('.preloader').classList.add('fade-out'); }, 1500); };
+/** 
+ * PRELOADER TIMING REFINEMENT
+ * Switched from window.onload to DOMContentLoaded to prevent 5+ second delays on mobile 
+ * caused by waiting for heavy hero videos to fully download. 
+ * IMPACT: Page reveals in ~1.5s while videos buffer in background.
+ * REVERT NOTE: To wait for 100% video download completion, swap back to 'window.onload'.
+ */
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => { document.querySelector('.preloader').classList.add('fade-out'); }, 1500);
+});
+// Original: window.onload = () => { setTimeout(() => { document.querySelector('.preloader').classList.add('fade-out'); }, 1500); };
 function toggleMenu() { document.querySelector('.nav-links').classList.toggle('active'); }
 function closeMenu() { document.querySelector('.nav-links').classList.remove('active'); }
 
@@ -9,14 +19,24 @@ const heroContent = [
         text: "Experience the seamless integration of eco-friendly luxury and digital technology with G Think."
     },
     {
-        badge: "G Smart App",
-        title: "Total Control.<br><span>Everywhere.</span>",
-        text: "Monitor and manage your entire home security and devices from the palm of your hand."
-    },
-    {
         badge: "Smart Comfort",
         title: "Wake Up<br><span>Refresh.</span>",
         text: "Automated mood lighting and climate control for the perfect lifestyle routine."
+    },
+    {
+        badge: "Proactive Living",
+        title: "Adaptive Home<br><span>Intelligence.</span>",
+        text: "Your home learns your routine to provide unprecedented comfort and efficiency."
+    },
+    {
+        badge: "Luxury Tech",
+        title: "Seamless<br><span>Elegance.</span>",
+        text: "Premium hardware meets intuitive software for the ultimate modern lifestyle."
+    },
+    {
+        badge: "Ultimate Experience",
+        title: "Future of<br><span>Living.</span>",
+        text: "Discover the pinnacle of smart home innovation with our premium automation suite."
     }
 ];
 
@@ -28,26 +48,61 @@ const heroBadge = document.querySelector('.hero-badge');
 const heroTitle = document.querySelector('.hero-content h1');
 const heroDesc = document.querySelector('.hero-content p');
 
-setInterval(() => {
-    // 1. Remove Active
-    slides[currentSlide].classList.remove('active');
+// Initialize Video Diagnostics
+document.querySelectorAll('.video-slide video').forEach((v, i) => {
+    v.addEventListener('loadstart', () => console.log(`Video ${i + 1} started loading...`));
+    v.addEventListener('play', () => console.log(`Video ${i + 1} is playing.`));
+    v.addEventListener('error', (e) => console.error(`Video ${i + 1} error:`, v.error));
+});
+
+function updateSlider() {
+    if (slides.length === 0) return;
+
+    // 1. Remove Active from OLD slide
+    if (slides[currentSlide]) {
+        slides[currentSlide].classList.remove('active');
+    }
 
     // 2. Increment
     currentSlide = (currentSlide + 1) % slides.length;
 
-    // 3. Add Active
-    slides[currentSlide].classList.add('active');
+    // 3. Add Active to NEW slide
+    if (slides[currentSlide]) {
+        slides[currentSlide].classList.add('active');
 
-    // 4. Update Text Content with Fade Effect
-    const content = heroContent[currentSlide]; // Assuming 4 slides match 4 content objects
+        // 4. Handle Video Playback
+        const nextVideo = slides[currentSlide].querySelector('video');
+        if (nextVideo) {
+            nextVideo.currentTime = 0; // REWIND TO START
+            const playPromise = nextVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Autoplay started!
+                }).catch(error => {
+                    // Autoplay blocked/failed
+                });
+            }
+        }
+    }
 
-    // Simple Text Swap (You could add opacity transition here if desired)
-    if (content) {
+    // 5. Update Text Content
+    const content = heroContent[currentSlide];
+    if (content && heroBadge && heroTitle && heroDesc) {
         heroBadge.textContent = content.badge;
         heroTitle.innerHTML = content.title;
         heroDesc.textContent = content.text;
     }
-}, 5000); // Increased to 5s for readability
+
+    // 6. Schedule Next Update with Dynamic Timing
+    // Specific delays as requested by user
+    const delays = [6000, 6000, 18000, 16000, 19000];
+    const delay = delays[currentSlide] || 6000;
+
+    setTimeout(updateSlider, delay);
+}
+
+// Start the cycle
+setTimeout(updateSlider, 6000);
 
 function toggleFaq(element) { element.classList.toggle('active'); }
 
@@ -113,10 +168,12 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
 /* HEADER SCROLL EFFECT */
 const navbar = document.querySelector('.navbar');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    if (navbar) {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     }
 });
 
