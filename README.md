@@ -13,11 +13,11 @@ Experience the future of intelligent living here:
 ### Desktop Experience
 ![Desktop Preview](assets/img/readme/desktop_preview.png)
 
-### Mobile-Ready Design
-![Mobile Preview](assets/img/readme/mobile_preview.png)
-
 ### Professional Support & Contact
 ![Footer Preview](assets/img/readme/footer_preview.png)
+
+### Mobile-Ready Design
+![Mobile Preview](assets/img/readme/mobile_preview.png)
 
 ---
 
