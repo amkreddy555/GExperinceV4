@@ -4,7 +4,7 @@
     --primary-light: #34d399;
     --primary-glow: rgba(16, 185, 129, 0.3);
     --accent: #2563eb;
-    --text-dark: #1e293b;
+    --text-dark: #051b40;
     --text-gray: #64748b;
     --text-light: #f8fafc;
     --bg-white: #ffffff;
@@ -16,58 +16,62 @@
 /* === TOP-LEFT LOGO === */
 .top-left-logo {
     position: fixed;
-    top: 25px;
-    left: 25px;
+    top: 0px;
+    left: 3%;
     z-index: 10000;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 9px 15px 9px 18px;
-    /* Balanced padding for the new logo */
-    background: rgba(255, 255, 255, 0.08);
-    /* Lighter glass for brand clarity */
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    /* Sharper pill corners */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 4px 15px 4px 18px;
+
+    /* --- NEW: OPTION 2 (Dynamic Prism) --- */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px) brightness(1.3) contrast(1.1);
+    -webkit-backdrop-filter: blur(25px) brightness(1.3) contrast(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    /* ------------------------------------ */
+
+    /* ------------------------------------ */
+
+    border-radius: 0px 0px 15px 15px;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .top-left-logo img {
     height: 55px;
     /* Increased for the new main_logo.png */
-    width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+    filter: none;
+    /* Clean look without halo contrast */
     transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .top-left-logo:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(16, 185, 129, 0.2);
     transform: translateY(-2px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
     border-color: rgba(255, 255, 255, 0.4);
 }
 
 .top-left-logo:hover img {
-    transform: scale(1.08);
+    transform: scale(1.05);
+    /* Slightly subtler scale */
 }
 
 /* === ELITE TOP-RIGHT SUNRAY NAVIGATION (1/4th Circle) === */
 .menu-container {
     position: fixed;
-    top: 25px;
-    right: 25px;
+    top: 0px;
+    right: 3%;
     z-index: 10000;
 }
 
 .menu-trigger {
     cursor: pointer;
-    padding: 10px;
+    padding: 12px 10px 12px 10px;
     z-index: 10001;
     position: relative;
     width: 55px;
@@ -75,11 +79,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.3);
-    /* Premium dark glass */
-    backdrop-filter: blur(10px);
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* --- NEW: OPTION 2 (Synced with Logo) --- */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px) brightness(1.3) contrast(1.1);
+    -webkit-backdrop-filter: blur(25px) brightness(1.3) contrast(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    /* ----------------------------------------- */
+
+    /* ----------------------------------------- */
+
+    border-radius: 0px 0px 15px 15px;
     transition: 0.3s;
 }
 
@@ -99,10 +110,12 @@
     position: absolute;
     height: 3px;
     width: 100%;
-    background: #fff !important;
-    /* White for high-contrast on mobile */
+    background: var(--text-dark) !important;
+    /* Halo Contrast: Dark core + White outer shadow */
+    box-shadow: 0 0 1px #fff, 0 0 2px rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     transition: .25s ease-in-out;
+    filter: none;
 }
 
 .hamburger-icon span:nth-child(1) {
@@ -192,23 +205,26 @@
 /* Support: Pulled up significantly */
 
 .sunray-links li a {
+    /* --- NEW: THEME 1 (Frost Pearl) --- */
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(25px) brightness(1.5) contrast(1.2) !important;
+    -webkit-backdrop-filter: blur(25px) brightness(1.5) contrast(1.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 0 15px rgba(255, 255, 255, 0.6) !important;
+    /* ------------------------------------ */
+
+    /* ------------------------------------ */
+
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     width: 95px !important;
-    /* Restored Desktop Size */
     height: 95px !important;
-    background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(60, 60, 60, 0.7)) !important;
-    /* Semi-solid for visibility */
-    backdrop-filter: blur(15px);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
     border-radius: 50% !important;
     color: #fff !important;
     text-decoration: none !important;
     transition: all 0.3s ease !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
     padding: 10px !important;
     text-align: center !important;
 }
@@ -221,19 +237,23 @@
 }
 
 .sunray-links li a i {
-    font-size: 1.4rem !important;
-    margin-bottom: 8px !important;
-    /* Increased spacing for breathing room */
+    font-size: 1.6rem !important;
+    font-weight: 900 !important;
+    margin-bottom: 6px !important;
+    color: #051b40 !important;
+    /* Crisp Etched contrast: Tiny sharp dark shadow instead of fuzzy halo */
+    filter: drop-shadow(0.5px 0.5px 0px rgba(0, 0, 0, 0.2));
 }
 
 .sunray-links li a span {
-    font-size: 0.7rem !important;
-    /* Slightly larger for clarity */
-    font-weight: 600 !important;
-    /* Refined weight */
+    font-size: 0.75rem !important;
+    color: #051b40 !important;
+    /* Sharp dark etch */
+    text-shadow: 0.3px 0.3px 0px rgba(0, 0, 0, 0.1);
+    font-weight: 800 !important;
+    /* Maximum Premium Stance */
     text-transform: uppercase !important;
-    letter-spacing: 1.5px !important;
-    /* Wide spacing for premium feel */
+    letter-spacing: 1px !important;
 }
 
 /* Beams Effect */
@@ -395,27 +415,22 @@
     }
 }
 
-/* === EYE BLINK ANIMATION === */
+/* === ICON PULSE ANIMATION === */
 .exp-btn-round i {
-    animation: eye-blink 4s infinite;
-    /* Blink every 4 seconds */
+    animation: icon-pulse 3s infinite ease-in-out;
     transform-origin: center;
 }
 
-@keyframes eye-blink {
+@keyframes icon-pulse {
 
     0%,
-    48%,
-    52%,
     100% {
-        transform: scaleY(1);
+        transform: scale(1);
     }
 
     50% {
-        transform: scaleY(0.1);
+        transform: scale(1.1);
     }
-
-    /* Snap shut */
 }
 
 .exp-btn-round:hover {
@@ -435,8 +450,8 @@
 
     /* Larger Logo Container */
     .top-left-logo {
-        padding: 9px 15px 9px 18px;
-        border-radius: 15px;
+        padding: 4px 15px 4px 18px;
+        border-radius: 0px 0px 15px 15px;
     }
 
     /* Larger Logo Image */
@@ -546,15 +561,19 @@
 
 /* Responsive adjustment */
 @media (max-width: 768px) {
+
+    /* Refined Logo Positioning for Mobile */
     .top-left-logo {
-        padding: 3px 9px 3px 10px;
+        top: 0px;
+        left: 3%;
+        padding: 4px 10px 4px 10px;
+        background: rgba(0, 0, 0, 0.03);
+        /* Slightly darker for legibility on small screens */
     }
 
-    /* Restore Logo Size (User Request) */
     .top-left-logo img {
-        height: 55px;
-        /* Increased for better presence */
-        /* Back to default */
+        height: 48px;
+        /* Slightly more compact for mobile flow */
     }
 
     /* Proper Flow for Mobile Header */
@@ -633,12 +652,14 @@
         font-size: 1.1rem !important;
         /* Scaled down icons */
         margin-bottom: 4px !important;
+        font-weight: 700 !important;
     }
 
     .sunray-links li a span {
-        font-size: 0.6rem !important;
+        font-size: 0.65rem !important;
         /* Sharper text */
         letter-spacing: 1px !important;
+        font-weight: 600 !important;
     }
 
     .sunray-beams {
