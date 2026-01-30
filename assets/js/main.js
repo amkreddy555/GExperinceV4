@@ -37,6 +37,11 @@ const heroContent = [
         badge: "Ultimate Experience",
         title: "Future of<br><span>Living.</span>",
         text: "Discover the pinnacle of smart home innovation with our premium automation suite."
+    },
+    {
+        badge: "Born in India • Built for the World",
+        title: "Engineered in India,<br>Designed for the World.",
+        text: "Leading the global revolution in smart home intelligence. Premium technology that transcends borders."
     }
 ];
 
@@ -47,12 +52,13 @@ const slides = document.querySelectorAll('.hero-slide');
 const heroBadge = document.querySelector('.hero-badge');
 const heroTitle = document.querySelector('.hero-content h1');
 const heroDesc = document.querySelector('.hero-content p');
+const heroInfo = document.querySelector('.hero-content');
 
 // Initialize Video Diagnostics
 document.querySelectorAll('.video-slide video').forEach((v, i) => {
-    v.addEventListener('loadstart', () => console.log(`Video ${i + 1} started loading...`));
-    v.addEventListener('play', () => console.log(`Video ${i + 1} is playing.`));
-    v.addEventListener('error', (e) => console.error(`Video ${i + 1} error:`, v.error));
+    v.addEventListener('loadstart', () => { });
+    v.addEventListener('play', () => { });
+    v.addEventListener('error', (e) => { });
 });
 
 function updateSlider() {
@@ -87,15 +93,22 @@ function updateSlider() {
 
     // 5. Update Text Content
     const content = heroContent[currentSlide];
-    if (content && heroBadge && heroTitle && heroDesc) {
+    if (content && heroBadge && heroTitle && heroDesc && heroInfo) {
         heroBadge.textContent = content.badge;
         heroTitle.innerHTML = content.title;
         heroDesc.textContent = content.text;
+
+        // Apply Global Luxe styling if it's the last slide (index 5)
+        if (currentSlide === 5) {
+            heroInfo.classList.add('global-luxe-mode');
+        } else {
+            heroInfo.classList.remove('global-luxe-mode');
+        }
     }
 
     // 6. Schedule Next Update with Dynamic Timing
-    // Specific delays as requested by user
-    const delays = [6000, 6000, 18000, 16000, 19000];
+    // Specific delays for each slide
+    const delays = [6000, 6000, 18000, 16000, 19000, 10000];
     const delay = delays[currentSlide] || 6000;
 
     setTimeout(updateSlider, delay);

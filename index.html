@@ -20,6 +20,8 @@
 
     <link rel="stylesheet" href="assets/css/style.css?v=3.0">
     <link rel="stylesheet" href="assets/css/navigation.css?v=3.0">
+    <link rel="icon" type="image/png" href="assets/img/loader_g.png">
+    <link rel="apple-touch-icon" href="assets/img/loader_g.png">
 </head>
 
 <body>
@@ -66,8 +68,8 @@
                 </video>
             </div>
 
-            <!-- 6. Bedroom Comfort (Image) -->
-            <!-- <div class="hero-slide" style="background-image: url('assets/img/hero/hero_tablet.png');"></div> -->
+            <!-- 6. Made in India (Image) -->
+            <div class="hero-slide" style="background-image: url('assets/img/hero/hero_india.png');"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content reveal">
@@ -614,7 +616,90 @@
 
     <!-- Experience Center Round Button (Left-Center) -->
     <a href="experience.html" class="exp-btn-round" title="Launch Experience Center">
-        <i class="ph-thin ph-virtual-reality"></i>
+        <svg class="exp-icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <radialGradient id="faceGradient" cx="40%" cy="30%" r="60%">
+                    <stop offset="0%" stop-color="#FFEB3B" />
+                    <stop offset="100%" stop-color="#FBC02D" />
+                </radialGradient>
+                <linearGradient id="vrGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#4a4a4a" />
+                    <stop offset="45%" stop-color="#1a1a1a" />
+                    <stop offset="55%" stop-color="#000000" />
+                    <stop offset="100%" stop-color="#2a2a2a" />
+                </linearGradient>
+                <radialGradient id="houseGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#10b981" stop-opacity="0.9" />
+                    <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+                </radialGradient>
+                <!-- OVERLAP SHIELD: Solid background matches button gold -->
+                <radialGradient id="shieldGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#BF953F" />
+                    <stop offset="85%" stop-color="#AA771C" />
+                    <stop offset="100%" stop-color="#BF953F" />
+                </radialGradient>
+            </defs>
+
+            <!-- Experience Center Button: Standby Phase (0-60s) -->
+            <g class="layer-standby-v9">
+                <circle cx="50" cy="50" r="49" fill="url(#faceGradient)" />
+                <ellipse cx="38" cy="40" rx="4.5" ry="6.5" fill="#2d3436" />
+                <ellipse cx="65" cy="40" rx="4.5" ry="6.5" fill="#2d3436" />
+                <path d="M 30 68 Q 48 80 70 68" fill="none" stroke="#2d3436" stroke-width="4.5"
+                    stroke-linecap="round" />
+                <path d="M 6 36 L 21 31 L 21 58 L 6 52 Z" fill="#fff" opacity="0.9" />
+                <rect x="18" y="33" width="77" height="28" rx="6" fill="url(#vrGlass)" />
+                <path d="M 45 61 Q 56 53 67 61" fill="#FBC02D" />
+                <text x="56" y="52" font-family="'Inter', sans-serif" font-size="20" font-weight="950"
+                    fill="rgba(255,255,255,0.95)" text-anchor="middle" letter-spacing="1">VR</text>
+            </g>
+
+            <!-- Experience Center Button: VR Phase (Active Loop) -->
+            <g class="stage-vr">
+                <g class="layer-smiley-nod">
+                    <circle cx="50" cy="50" r="49" fill="url(#faceGradient)" />
+                    <g class="smiley-eyes">
+                        <ellipse cx="38" cy="40" rx="4.5" ry="6.5" fill="#2d3436" class="eye-left" />
+                        <ellipse cx="65" cy="40" rx="4.5" ry="6.5" fill="#2d3436" class="eye-right" />
+                    </g>
+                    <path d="M 30 68 Q 48 80 70 68" fill="none" stroke="#2d3436" stroke-width="4.5"
+                        stroke-linecap="round" class="mouth-default" />
+                    <path d="M 28 62 Q 50 85 72 62 L 68 60 Q 50 78 32 60 Z" fill="#2d3436" class="mouth-laugh"
+                        opacity="0" />
+                </g>
+                <g class="layer-vr-attached">
+                    <path d="M 6 36 L 21 31 L 21 58 L 6 52 Z" fill="#fff" opacity="0.9" />
+                    <rect x="18" y="33" width="77" height="28" rx="6" fill="url(#vrGlass)" />
+                    <path d="M 45 61 Q 56 53 67 61" fill="#FBC02D" />
+                    <text x="56" y="52" font-family="'Inter', sans-serif" font-size="20" font-weight="950"
+                        fill="rgba(255,255,255,0.95)" text-anchor="middle" letter-spacing="1">VR</text>
+                </g>
+            </g>
+
+            <!-- Experience Center Button: Branding Phase (Radiant Monolith) -->
+            <g class="stage-experience">
+                <circle cx="50" cy="50" r="48" fill="url(#shieldGradient)" />
+
+                <g class="powered-house monolith-v12">
+                    <!-- Radiant energy beams -->
+                    <line x1="38" y1="78" x2="38" y2="45" stroke="#10b981" stroke-width="4" stroke-linecap="round"
+                        class="beam-v12 beam-1" />
+                    <line x1="50" y1="78" x2="50" y2="35" stroke="#10b981" stroke-width="6" stroke-linecap="round"
+                        class="beam-v12 beam-2" />
+                    <line x1="62" y1="78" x2="62" y2="45" stroke="#10b981" stroke-width="4" stroke-linecap="round"
+                        class="beam-v12 beam-3" />
+
+                    <!-- Monolith architectural house -->
+                    <rect x="25" y="48" width="50" height="32" rx="2" fill="none" stroke="#fff" stroke-width="7"
+                        class="monolith-base" />
+                    <path d="M 20 50 L 50 20 L 80 50" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"
+                        class="monolith-roof" />
+
+                    <!-- AI Energy Core -->
+                    <circle cx="50" cy="62" r="12" fill="url(#houseGlow)" class="house-energy-core-v12" />
+                </g>
+            </g>
+        </svg>
     </a>
 
     <script src="assets/js/navigation.js"></script>

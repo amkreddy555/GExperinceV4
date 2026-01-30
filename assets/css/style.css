@@ -701,6 +701,67 @@ img {
     line-height: 1;
 }
 
+/* GLOBAL LUXE STYLING (Slide 6 - Final Refinement) */
+.hero-content.global-luxe-mode h1 {
+    background: transparent !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-clip: initial !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.2), 0 0 50px rgba(255, 153, 51, 0.15), 0 0 80px rgba(18, 136, 7, 0.1) !important;
+    animation: luxe-aura 8s infinite ease-in-out !important;
+    letter-spacing: -1.5px !important;
+    font-weight: 900 !important;
+}
+
+@keyframes luxe-aura {
+
+    0%,
+    100% {
+        text-shadow: 0 0 30px rgba(255, 255, 255, 0.2), 0 0 50px rgba(255, 153, 51, 0.1), 0 0 80px rgba(18, 136, 7, 0.05);
+        transform: scale(1);
+    }
+
+    50% {
+        text-shadow: 0 0 40px rgba(255, 255, 255, 0.3), 0 0 70px rgba(255, 153, 51, 0.2), 0 0 100px rgba(18, 136, 7, 0.15);
+        transform: scale(1.02);
+    }
+}
+
+.hero-content.global-luxe-mode .btn-primary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+    font-weight: 700 !important;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-content.global-luxe-mode .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255, 153, 51, 0.4), #fff, rgba(18, 136, 7, 0.4), transparent);
+    transform: rotate(30deg);
+    animation: gold-shimmer 6s infinite ease-in-out;
+}
+
+@keyframes gold-shimmer {
+    0% {
+        left: -60%;
+    }
+
+    30%,
+    100% {
+        left: 160%;
+    }
+}
+
 .stat-item p {
     color: #fff;
     font-size: 0.85rem;
@@ -1972,5 +2033,13 @@ footer {
         width: 100%;
         max-width: 100%;
         overflow-x: hidden;
+    }
+}
+
+/* MOBILE REFINEMENTS for GLOBAL LUXE */
+@media (max-width: 768px) {
+    .hero-content.global-luxe-mode h1 {
+        font-size: 2.4rem !important;
+        letter-spacing: -1px !important;
     }
 }
