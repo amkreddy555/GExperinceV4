@@ -39,6 +39,11 @@ const heroContent = [
         text: "Discover the pinnacle of smart home innovation with our premium automation suite."
     },
     {
+        badge: "Digital Excellence",
+        title: "Software<br><span>Engineering.</span>",
+        text: "Building high-performance web, mobile, and IoT cloud platforms."
+    },
+    {
         badge: "Born in India • Built for the World",
         title: "Engineered in India,<br>Designed for the World.",
         text: "Leading the global revolution in smart home intelligence. Premium technology that transcends borders."
@@ -98,8 +103,8 @@ function updateSlider() {
         heroTitle.innerHTML = content.title;
         heroDesc.textContent = content.text;
 
-        // Apply Global Luxe styling if it's the last slide (index 5)
-        if (currentSlide === 5) {
+        // Apply Global Luxe styling if it's the last slide (index 6)
+        if (currentSlide === 6) {
             heroInfo.classList.add('global-luxe-mode');
         } else {
             heroInfo.classList.remove('global-luxe-mode');
@@ -108,7 +113,8 @@ function updateSlider() {
 
     // 6. Schedule Next Update with Dynamic Timing
     // Specific delays for each slide
-    const delays = [6000, 6000, 18000, 16000, 19000, 10000];
+    // [0-2] 6s, 6s, 18s [3-4] 16s, 19s, [5] Digital 6s, [6] India 10s
+    const delays = [6000, 6000, 18000, 16000, 19000, 6000, 10000];
     const delay = delays[currentSlide] || 6000;
 
     setTimeout(updateSlider, delay);

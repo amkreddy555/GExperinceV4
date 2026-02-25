@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineering | Gthink Inventors</title>
+    <meta name="description"
+        content="World-class digital engineering by Gthink Inventors. We build high-performance web platforms, mobile apps, and custom IoT dashboards.">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="assets/css/style.css?v=3.0">
+    <link rel="stylesheet" href="assets/css/navigation.css?v=3.0">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+</head>
+
+<body class="page-software">
+    <div class="preloader">
+        <div class="loader-content">
+            <div class="loader-img-box">
+                <img src="assets/img/loader_g.png" alt="Gthink Loader" class="loader-img">
+            </div>
+            <div class="loader-line"></div>
+        </div>
+    </div>
+
+    <a href="index.html" class="top-left-logo">
+        <img src="assets/img/main_logo.png" alt="Gthink Inventors Logo">
+    </a>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
+        <div class="hero-slider">
+            <!-- Slide 1: Static Image -->
+            <div class="hero-slide active"
+                style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=80');">
+            </div>
+
+            <!-- Slide 2: Software Engineering Video -->
+            <div class="hero-slide video-slide">
+                <video id="software-hero-vid" src="assets/video/softwareEngineering.mp4" autoplay muted playsinline
+                    style="filter: brightness(1.2); object-fit: cover; width: 100%; height: 100%;"></video>
+                <div class="hero-overlay" style="background: rgba(0, 0, 0, 0.4);"></div>
+            </div>
+        </div>
+        <div class="hero-overlay" style="background: rgba(0, 0, 0, 0.45);"></div>
+
+        <!-- Text Wrapper -->
+        <div class="hero-content-wrapper"
+            style="position: relative; z-index: 10; width: 100%; max-width: 900px; height: 250px; display: flex; align-items: center; justify-content: center; margin-top: 5vh;">
+
+            <!-- Content 1: Static Slide Text -->
+            <div class="hero-content static-content"
+                style="position: absolute; width: 100%; transition: opacity 0.5s ease-in-out; transform: translateY(0);">
+                <div class="hero-badge">Digital Excellence</div>
+                <h1>Excellence in<br><span>Software Engineering.</span></h1>
+                <p>From immersive web platforms to native mobile experiences and complex IoT integrations, we build the
+                    digital ecosystems of the future.</p>
+                <a href="#software-services" class="btn-primary shimmer-btn"
+                    style="margin-top: 1.5rem; display: inline-block;">Explore Capabilities</a>
+            </div>
+
+            <!-- Content 2: Video Slide Text -->
+            <div class="hero-content video-content"
+                style="position: absolute; width: 100%; opacity: 0; transition: opacity 0.5s ease-in-out; transform: translateY(0);">
+                <div class="hero-badge">Next-Gen Architecture</div>
+                <h1>World-Class<br><span>Architecture.</span></h1>
+                <p>Innovative software architecture and robust development frameworks designed for scalability and
+                    performance.</p>
+                <a href="#software-services" class="btn-primary shimmer-btn"
+                    style="margin-top: 1.5rem; display: inline-block;">Explore Capabilities</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="software-services" class="products">
+        <div class="separator-gold-flat"></div>
+        <div class="section-header reveal"><span>Our Expertise</span>
+            <h2>Digital Capabilities</h2>
+        </div>
+        <div class="software-grid">
+
+            <div class="luxe-card sector-card tech-sector-card reveal delay-100">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600"
+                    alt="Web Applications" class="sector-bg">
+                <div class="sector-overlay"></div>
+                <div class="sector-content">
+                    <div class="sector-icon"><i class="ph ph-browsers"></i></div>
+                    <h3>Web Applications</h3>
+                    <p>We craft high-performance websites and complex web applications using modern frameworks and
+                        cloud-native architecture.</p>
+                    <ul class="sector-features">
+                        <li><i class="ph-bold ph-check-circle"></i> React & Next.js Development</li>
+                        <li><i class="ph-bold ph-check-circle"></i> Custom Admin Dashboards</li>
+                        <li><i class="ph-bold ph-check-circle"></i> E-Commerce Architecture</li>
+                        <li><i class="ph-bold ph-check-circle"></i> Secure Node.js & Python Backends</li>
+                    </ul>
+                    <a href="#contact-cta" class="card-cta-link" onclick="selectInterest('Web Application')">Build With
+                        Us <i class="ph-bold ph-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="luxe-card sector-card tech-sector-card reveal delay-200">
+                <img src="assets/img/mobile_engineering.jpg" alt="Mobile Engineering" class="sector-bg">
+                <div class="sector-overlay"></div>
+                <div class="sector-content">
+                    <div class="sector-icon"><i class="ph ph-device-mobile"></i></div>
+                    <h3>Mobile Engineering</h3>
+                    <p>Native and cross-platform mobile app development. We build scalable, secure applications that
+                        perform
+                        flawlessly across platforms.</p>
+                    <ul class="sector-features">
+                        <li><i class="ph-bold ph-check-circle"></i> iOS (Swift) & Android (Kotlin)</li>
+                        <li><i class="ph-bold ph-check-circle"></i> React Native & Flutter Apps</li>
+                        <li><i class="ph-bold ph-check-circle"></i> Real-time Hardware Integration (BLE/WiFi)</li>
+                        <li><i class="ph-bold ph-check-circle"></i> Consumer & Enterprise Portals</li>
+                    </ul>
+                    <a href="#contact-cta" class="card-cta-link"
+                        onclick="selectInterest('Mobile App (iOS/Android)')">Build With Us <i
+                            class="ph-bold ph-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="luxe-card sector-card tech-sector-card reveal delay-300">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600"
+                    alt="IoT Integrations" class="sector-bg">
+                <div class="sector-overlay"></div>
+                <div class="sector-content">
+                    <div class="sector-icon"><i class="ph ph-cpu"></i></div>
+                    <h3>IoT Integrations</h3>
+                    <p>Custom dashboards bridging raw hardware data with intuitive software, providing real-time
+                        controls
+                        and remote monitoring.</p>
+                    <ul class="sector-features">
+                        <li><i class="ph-bold ph-check-circle"></i> MQTT & WebSocket Protocols</li>
+                        <li><i class="ph-bold ph-check-circle"></i> AWS IoT Core & Azure IoT Setup</li>
+                        <li><i class="ph-bold ph-check-circle"></i> Smart Device Provisioning</li>
+                        <li><i class="ph-bold ph-check-circle"></i> Over-the-Air (OTA) Update Systems</li>
+                    </ul>
+                    <a href="#contact-cta" class="card-cta-link" onclick="selectInterest('IoT Dashboard')">Build With Us
+                        <i class="ph-bold ph-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="luxe-card sector-card tech-sector-card reveal delay-400">
+                <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&q=80&w=600"
+                    alt="UI/UX Architecture" class="sector-bg">
+                <div class="sector-overlay"></div>
+                <div class="sector-content">
+                    <div class="sector-icon"><i class="ph ph-bezier-curve"></i></div>
+                    <h3>UI/UX Architecture</h3>
+                    <p>Every great product begins with exceptional interface design. We create user journeys that
+                        captivate
+                        your audience and simplify complex flows.</p>
+                    <ul class="sector-features">
+                        <li><i class="ph-bold ph-check-circle"></i> Figma Prototyping & Wireframing</li>
+                        <li><i class="ph-bold ph-check-circle"></i> User Mapping & Architecture</li>
+                        <li><i class="ph-bold ph-check-circle"></i> High-converting Landing Pages</li>
+                        <li><i class="ph-bold ph-check-circle"></i> Design System Documentation</li>
+                    </ul>
+                    <a href="#contact-cta" class="card-cta-link" onclick="selectInterest('Website')">Build With Us <i
+                            class="ph-bold ph-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- OUR PROCESS -->
+    <section id="process" class="solutions" style="background: var(--bg-light); position: relative;">
+        <div class="separator-gold-flat"></div>
+        <div class="section-header reveal"><span>How We Build</span>
+            <h2>Our Development Process</h2>
+        </div>
+        <div class="timeline" style="margin-top: 1rem;">
+            <div class="timeline-item reveal delay-100">
+                <div class="timeline-content">
+                    <div class="step-num">01</div>
+                    <h3 style="margin-bottom: 0.5rem; color: var(--text-dark);">Discovery & Architecture</h3>
+                    <p style="margin-bottom: 0;">We analyze your business goals, target audience, and (if applicable)
+                        hardware specs to architect a comprehensive digital roadmap.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal delay-200">
+                <div class="timeline-content">
+                    <div class="step-num">02</div>
+                    <h3 style="margin-bottom: 0.5rem; color: var(--text-dark);">Design & Prototyping</h3>
+                    <p style="margin-bottom: 0;">Our UI/UX team crafts interactive high-fidelity wireframes, ensuring
+                        the user journey is completely flawless before heavy coding begins.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal delay-300">
+                <div class="timeline-content">
+                    <div class="step-num">03</div>
+                    <h3 style="margin-bottom: 0.5rem; color: var(--text-dark);">Agile Development</h3>
+                    <p style="margin-bottom: 0;">We build in fast, iterative sprint cycles. You get regular updates,
+                        playable functional demos, and absolute transparency in development.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal delay-400">
+                <div class="timeline-content">
+                    <div class="step-num">04</div>
+                    <h3 style="margin-bottom: 0.5rem; color: var(--text-dark);">Deployment & Scaling</h3>
+                    <p style="margin-bottom: 0;">Rigorous multi-device QA testing, highly secure cloud deployment, and
+                        post-launch maintenance to ensure long-term stability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-cta" class="support-section">
+        <div class="separator-gold-flat"></div>
+
+        <div class="section-header reveal"><span>Get Started</span>
+            <h2>Partner With Us</h2>
+        </div>
+
+        <div class="support-grid">
+
+            <!-- Left Side: Bold CTA & Trust Logos -->
+            <div class="cta-text reveal">
+
+                <h2>Let's Build<br>Something Great.</h2>
+                <p>We partner with visionary brands to engineer bespoke digital platforms. From intelligent IoT
+                    ecosystems to high-performance web and mobile applications, our team is dedicated to turning your
+                    concepts into reality.</p>
+
+                <div class="trust-signals" style="margin-top: 2.5rem; margin-bottom: 3rem;">
+                    <div class="trust-section-title"
+                        style="margin-bottom: 1.5rem; font-size: 0.9rem; letter-spacing: 1px; color: #64748b; text-transform: uppercase; font-weight: 700;">
+                        Trusted By Our Partners</div>
+                    <div class="trust-logos"
+                        style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; justify-content: flex-start;">
+                        <img src="assets/img/client_aquagenius.png" alt="AquaGenius" class="client-logo"
+                            style="height: 38px; object-fit: contain;">
+                        <img src="assets/img/client_smartdrink.png" alt="SmartDrink" class="client-logo"
+                            style="height: 85px; object-fit: contain;">
+                        <img src="assets/img/Client_Vcloud_softtech.jpeg" alt="Vcloud Softtech" class="client-logo"
+                            style="height: 75px; border-radius: 4px; mix-blend-mode: multiply; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Contact Form Card -->
+            <div id="contact-wrapper" class="luxe-card contact-wrapper reveal">
+                <div class="contact-header">
+                    <h3>Start Your Project</h3>
+                    <p>Fill out the form and we'll get back to you within 24 hours.</p>
+                </div>
+
+                <form id="contactForm">
+
+                    <div class="form-group"><label>Name</label><input type="text" class="form-control"
+                            placeholder="John Doe" required></div>
+                    <div class="form-group"><label>Email</label><input type="email" class="form-control"
+                            placeholder="john@example.com"></div>
+                    <div class="form-group"><label>Phone</label><input type="tel" class="form-control"
+                            placeholder="+91 90000 12345" pattern="[6789][0-9]{9}" required></div>
+                    <div class="form-group"><label>Interest</label>
+                        <select id="interestSelect" class="form-control">
+                            <option>Website</option>
+                            <option>Web Application</option>
+                            <option>Mobile App (iOS/Android)</option>
+                            <option>IoT Dashboard</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Details</label><textarea class="form-control"
+                            placeholder="Tell us about your project..."></textarea></div>
+                    <button type="submit" class="submit-btn btn-nav">Request Consultation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div id="footer-slant" class="separator-gold-flat"></div>
+        <div class="footer-glass-bg"></div>
+        <div class="footer-container">
+            <!-- 1. BRAND -->
+            <div class="footer-col footer-brand">
+                <a href="index.html" class="footer-logo" style="text-decoration: none; display:block;">Gthink
+                    <span>Inventors</span></a>
+                <p class="brand-desc">Reinventing the way you live with AI and IoT.</p>
+                <div class="socials">
+                    <a href="https://www.facebook.com/gthinkinventors" class="social-btn facebook" target="_blank"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/gthinkinventors/" class="social-btn instagram" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@g-thinkinventorspvtltd1877" class="social-btn youtube"
+                        target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- 2. QUICK LINKS -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#solutions">Solutions</a></li>
+                    <li><a href="index.html#products">Hardware</a></li>
+                    <li><a href="software-services.html">Software</a></li>
+                </ul>
+            </div>
+
+            <!-- 3. CONTACT US -->
+            <div class="footer-col" style="min-width: 280px;">
+                <h4>Contact Us</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone"></i> <a href="tel:+919908799084"
+                            style="color: inherit; text-decoration: none;">(+91)99087 99084</a></li>
+                    <li><i class="fas fa-envelope"></i> <span>contact@gthinkinventors.in</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Gthink Inventors. Engineered for the <span>Future</span>.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919908799084?text=Hello%20Gthink%20Inventors!%20I%20am%20interested%20in%20discussing%20a%20Software%20project."
+        class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- Sunrise Menu (Top-Right) -->
+    <div class="menu-container" id="sunriseMenu">
+        <div class="menu-trigger" onclick="toggleSunriseMenu()">
+            <div class="hamburger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="sunray-menu">
+            <div class="sunray-beams">
+                <div class="beam"></div>
+                <div class="beam"></div>
+                <div class="beam"></div>
+            </div>
+            <ul class="sunray-links">
+                <li style="--i:1"><a href="index.html"><i class="ph-thin ph-house"></i><span>Home</span></a></li>
+                <li style="--i:2"><a href="index.html#solutions"><i
+                            class="ph-thin ph-lightbulb"></i><span>Solutions</span></a></li>
+                <li style="--i:3"><a href="index.html#products"><i
+                            class="ph-thin ph-package"></i><span>Hardware</span></a></li>
+                <li style="--i:4"><a href="software-services.html"><i
+                            class="ph-thin ph-code"></i><span>Software</span></a></li>
+                <li style="--i:5"><a href="index.html#videos"><i
+                            class="ph-thin ph-play-circle"></i><span>Videos</span></a></li>
+                <li style="--i:6"><a href="index.html#reviews"><i class="ph-thin ph-star"></i><span>Reviews</span></a>
+                </li>
+                <li style="--i:7"><a href="index.html#about"><i class="ph-thin ph-users"></i><span>About</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="assets/js/navigation.js"></script>
+    <script>
+        // Minimal script for the specific page
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => { document.querySelector('.preloader').classList.add('fade-out'); }, 800);
+        });
+
+        // Scroll reveal logic
+        window.addEventListener('load', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+
+        // Auto-select Interest from Service Cards
+        function selectInterest(interestValue) {
+            const selectElement = document.getElementById('interestSelect');
+            if (selectElement) {
+                selectElement.value = interestValue;
+
+                // Highlight the dropdown to give visual feedback to the user
+                selectElement.style.transition = "all 0.3s ease";
+                selectElement.style.boxShadow = "0 0 0 4px rgba(16, 185, 129, 0.25)";
+                selectElement.style.borderColor = "var(--primary)";
+
+                setTimeout(() => {
+                    selectElement.style.boxShadow = "none";
+                    selectElement.style.borderColor = "#e2e8f0"; // Reset to default border
+                }, 1500);
+            }
+        }
+
+        // WhatsApp Form
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name = this.querySelector('input[type="text"]').value;
+                const email = this.querySelector('input[type="email"]').value;
+                const phone = this.querySelector('input[type="tel"]').value;
+                const interest = this.querySelector('select').value;
+                const details = this.querySelector('textarea').value;
+
+                const message = `*New Software Inquiry*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Phone:* ${phone}%0A*Interest:* ${interest}%0A*Details:* ${details}`;
+                window.open(`https://wa.me/919908799084?text=${message}`, '_blank');
+                this.reset();
+            });
+        }
+
+        // Hero Slider Logic (Variable Duration)
+        const slides = document.querySelectorAll('.hero-slide');
+        const defaultContent = document.querySelector('.hero-content.static-content');
+        const videoContent = document.querySelector('.hero-content.video-content');
+        const heroVideo = document.getElementById('software-hero-vid');
+
+        if (slides.length > 1) {
+            let currentSlide = 0;
+
+            function nextSlide() {
+                slides[currentSlide].classList.remove('active');
+                if (currentSlide === 0) {
+                    currentSlide = 1;
+                    if (defaultContent) defaultContent.style.opacity = '0';
+                    if (videoContent) videoContent.style.opacity = '1';
+
+                    // Reset and play the video when moving to the video slide
+                    if (heroVideo) {
+                        heroVideo.currentTime = 0;
+                        heroVideo.play().catch(() => { });
+                    }
+                    setTimeout(nextSlide, 18000); // 18 seconds for the video
+                } else {
+                    currentSlide = 0;
+                    if (defaultContent) defaultContent.style.opacity = '1';
+                    if (videoContent) videoContent.style.opacity = '0';
+                    setTimeout(nextSlide, 8000); // 8 seconds for the static image
+                }
+                slides[currentSlide].classList.add('active');
+            }
+
+            setTimeout(nextSlide, 8000); // Start cycle
+        }
+    </script>
+</body>
+
+</html>

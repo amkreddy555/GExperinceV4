@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="assets/css/navigation.css?v=3.0">
-    <link rel="icon" type="image/png" href="assets/img/loader_g.png">
-    <link rel="apple-touch-icon" href="assets/img/loader_g.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/favicon.png">
     <style>
         :root {
             --primary: #059669;
@@ -242,6 +242,25 @@
                 padding-top: 1rem;
                 /* Reduced from 8rem to remove gap below relative header */
             }
+
+            .product-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .product-info p.desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .specs-list {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -264,7 +283,6 @@
         </div>
         <div class="product-info">
             <span class="price">Flagship Series</span>
-            <!-- H1 Removed as per user request (moved to top header) -->
             <p class="desc">Transform your standard electrical switchboards into smart, connected interfaces without
                 changing your existing wiring. The G-Switch Module sits invisibly behind your switchboard, bringing
                 intelligence to your legacy appliances.</p>
@@ -290,32 +308,12 @@
 
         <div id="features" class="tab-content active">
             <h2>Smart Features</h2>
-            <p>Experience true automation with scheduling, scene creation, and remote access from anywhere in the world.
-                Our app provides real-time status updates and power consumption analytics.</p>
-            <br>
-            <p><strong>Security Mode:</strong> Randomize light patterns when you're on vacation to simulate presence.
-            </p>
+            <div id="features-container"></div>
         </div>
 
         <div id="specs" class="tab-content">
             <h2>Technical Specifications</h2>
-            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 10px; font-weight: 700;">Voltage</td>
-                    <td style="padding: 10px;">110-240V AC</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 10px; font-weight: 700;">Load</td>
-                    <td style="padding: 10px;">Up to 16A per channel</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 10px; font-weight: 700;">Connectivity</td>
-                    <td style="padding: 10px;">WiFi 2.4GHz</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 10px; font-weight: 700;">Dimensions</td>
-                    <td style="padding: 10px;">45 x 45 x 18 mm</td>
-                </tr>
+            <table id="specs-table" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
             </table>
         </div>
 
@@ -335,9 +333,17 @@
                 title: 'G-Switch Module',
                 subtitle: 'Retrofit Series',
                 desc: 'Transform your standard electrical switchboards into smart, connected interfaces without changing your existing wiring. The G-Switch Module sits invisibly behind your switchboard, bringing intelligence to your legacy appliances.',
-                img: 'https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
+                img: 'assets/img/product_gswitch.png',
                 specs: [
                     'Retrofit Design (No Rewiring)', 'WiFi + Bluetooth 5.0', 'Voice Control (Alexa/Google)', 'Energy Monitoring', 'Heavy Load Support (AC/Geyser)'
+                ],
+                featuresContent: `<p>Experience true automation with scheduling, scene creation, and remote access from anywhere in the world. The G-Switch module transforms your existing switches into smart nodes without altering your interior design.</p><br><p><strong>Active Energy Tracking:</strong> Monitor real-time power consumption of individual appliances to optimize your energy bills.</p><br><p><strong>Security Mode:</strong> Randomize light patterns when you're on vacation to simulate presence.</p>`,
+                specTable: [
+                    { label: 'Voltage', value: '110-240V AC, 50/60Hz' },
+                    { label: 'Max Load', value: 'Up to 16A per channel' },
+                    { label: 'Connectivity', value: 'WiFi 2.4GHz & Bluetooth 5.0' },
+                    { label: 'Dimensions', value: '45 x 45 x 18 mm' },
+                    { label: 'Compatibility', value: 'Any standard switchboard' }
                 ],
                 video: '_lnA8sC6zKE'
             },
@@ -345,9 +351,17 @@
                 title: 'Smart Touch Panel',
                 subtitle: 'Glass Series',
                 desc: 'Replace old switches with our premium crystal glass touch panels. Capacitive touch technology ensures a response in milliseconds, while the LED indicators provide status feedback even in the dark.',
-                img: 'https://images.unsplash.com/photo-1558002038-1091a1661116?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
+                img: 'assets/img/product_touchpanel.jpg',
                 specs: [
                     'Capacitive Touch Glass', 'Integrated WiFi', 'Backlit LED Indicators', 'Scratch Resistant', 'Scene Control Capability'
+                ],
+                featuresContent: `<p>Elevate your wall aesthetics with our ultra-responsive capacitive touch panels. Built from toughened, scratch-resistant crystal glass, they offer a premium tactile experience.</p><br><p><strong>Smart Lighting Engine:</strong> Set the exact mood with dimming capabilities and scene integrations directly from the panel.</p><br><p><strong>Night Mode:</strong> Subtle LED backlighting allows you to find the switches in complete darkness without disturbing your sleep.</p>`,
+                specTable: [
+                    { label: 'Operating Voltage', value: '230V AC ± 10%' },
+                    { label: 'Material', value: 'Toughened Crystal Glass' },
+                    { label: 'Touch Technology', value: 'Capacitive (Sub-10ms response)' },
+                    { label: 'Configurations', value: '2-Gang to 8-Gang modules' },
+                    { label: 'Lifespan', value: '100,000+ touch cycles' }
                 ],
                 video: 'j71NK-wM8xs'
             },
@@ -355,9 +369,17 @@
                 title: 'Curtain Motors',
                 subtitle: 'Motorized Series',
                 desc: 'Automate your natural lighting. Open your curtains at sunrise and close them at sunset automatically. Supports heavy drapes and integrates seamlessly with existing tracks.',
-                img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
+                img: 'assets/img/Curtaincontroller.png',
                 specs: [
                     'Heavy Duty Motor (50kg)', 'Super Silent Operation', 'Percentage Control', 'Touch & Pull Start', 'Schedule Based Operation'
+                ],
+                featuresContent: `<p>Experience the luxury of effortless natural lighting. Our motorized curtain tracks operate with whisper-quiet precision, integrating perfectly with your daily routine.</p><br><p><strong>Percent Control:</strong> Open your curtains exactly halfway, or precisely 25% to let in just the right amount of sunlight.</p><br><p><strong>Touch & Go:</strong> A gentle pull on the fabric automatically triggers the motor to open or close the curtain.</p>`,
+                specTable: [
+                    { label: 'Load Capacity', value: 'Up to 50kg' },
+                    { label: 'Noise Level', value: '< 30dB (Super Silent)' },
+                    { label: 'Motor Speed', value: '14 cm/s' },
+                    { label: 'Track Type', value: 'Customizable straight or curved' },
+                    { label: 'Input Power', value: '100-240V AC / 50-60Hz' }
                 ],
                 video: 'Jc90XFSGtC8'
             },
@@ -365,9 +387,17 @@
                 title: 'Smart Fingerprint Lock',
                 subtitle: 'Security Series',
                 desc: 'Go keyless with our advanced biometric door locks. Grant temporary access to guests via OTP, view entry logs on your app, and get alerted for unauthorized attempts.',
-                img: 'https://images.unsplash.com/photo-1558002038-1091a1661116?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
+                img: 'assets/img/product_lock.jpg',
                 specs: [
                     'Fingerprint + PIN + Card', 'App Unlocking', 'OTP Guest Access', 'Tamper Alarm', 'Physical Key Backup'
+                ],
+                featuresContent: `<p>A fortress for your front door. Our smart lock combines advanced 3D fingerprint recognition with remote access capabilities, giving you total control over who enters your home.</p><br><p><strong>Dynamic OTP Access:</strong> Generate 5-minute validity codes for delivery agents or guests without compromising your permanent PIN.</p><br><p><strong>Audit Trail:</strong> Check your smartphone app to see exactly who unlocked the door and precisely when.</p>`,
+                specTable: [
+                    { label: 'Unlocking Methods', value: 'Fingerprint, PIN, RFID, App, Key' },
+                    { label: 'Fingerprint Sensor', value: '3D Semiconductor (<0.3s)' },
+                    { label: 'Power Supply', value: '4x AA Batteries (12 months)' },
+                    { label: 'Emergency Power', value: 'USB-C / Power Bank' },
+                    { label: 'Security Alarms', value: 'Low Battery, Tamper Attempt' }
                 ],
                 video: 'U8zAu3TnFkE'
             },
@@ -375,15 +405,65 @@
                 title: 'Automated Gate',
                 subtitle: 'Access Series',
                 desc: 'Open your main gates without stepping out of your car. Our heavy-duty motors work with sliding and swing gates of all sizes, ensuring security and convenience.',
-                img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
+                img: 'assets/img/GateAutomation.png',
                 specs: [
                     'Heavy Duty (800kg)', 'Remote Control', 'Obstacle Detection', 'Auto-Close Timer', 'Manual Key Release'
                 ],
+                featuresContent: `<p>Arrive home in style without leaving your driving seat. Our gate automation systems are built for robust performance, handling massive residential and commercial gates with ease.</p><br><p><strong>Active Obstacle Detection:</strong> Advanced IR sensors instantly stop and reverse the gate if a vehicle, pet, or person crosses its path.</p><br><p><strong>Geofencing integration:</strong> Automatically initiate the opening sequence as your car approaches within a 50-meter radius.</p>`,
+                specTable: [
+                    { label: 'Max Gate Weight', value: '800kg (Sliding) / 400kg (Swing)' },
+                    { label: 'Opening Speed', value: '12 meters / minute' },
+                    { label: 'Operating Temp', value: '-20°C to +55°C' },
+                    { label: 'Motor Protection', value: 'Thermal Overload Switch' },
+                    { label: 'Manual Override', value: 'Safety clutch key included' }
+                ],
                 video: '-vtLgqu8es4'
             },
-            'staircase': { title: 'Staircase Lighting', subtitle: 'Motion Series', desc: 'Lights that follow your steps. Sensors detect your presence and light up the stairs sequentially.', img: 'https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', specs: ['Motion Activated', 'Sequential Lighting', 'Daylight Sensor', 'Speed Control', 'Addressable LEDs'], video: '_lnA8sC6zKE' },
-            'rgbw': { title: 'RGBW Controller', subtitle: 'Mood Lighting', desc: 'Paint your home with 16 million colors. Control LED strips to create the perfect ambiance for movies, parties, or relaxation.', img: 'https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', specs: ['16 Million Colors', 'Music Sync', 'App Control', 'Voice Compatible', 'Dimmable'], video: '_lnA8sC6zKE' },
-            'wardrobe': { title: 'Smart Wardrobe', subtitle: 'Luxury Series', desc: 'Open your wardrobe to see it light up automatically. Dehumidifiers keep your clothes fresh.', img: 'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', specs: ['Door Sensors', 'Auto Lighting', 'Dehumidifier Control', 'UV Sterilization', 'Soft Close'], video: '_lnA8sC6zKE' }
+            'staircase': {
+                title: 'Staircase Lighting', subtitle: 'Motion Series',
+                desc: 'Lights that follow your steps. Sensors detect your presence and light up the stairs sequentially.',
+                img: 'assets/img/product_staircase.jpg',
+                specs: ['Motion Activated', 'Sequential Lighting', 'Daylight Sensor', 'Speed Control', 'Addressable LEDs'],
+                featuresContent: `<p>Turn your staircase into a dynamic architectural feature. As you approach the first step, the lights cascade upwards or downwards in sequence, guiding your path safely.</p><br><p><strong>Ambient Light AI:</strong> Integrated lux sensors ensure the sequence only triggers when it's dark enough, saving energy during daylight.</p><br><p><strong>Custom Cascades:</strong> Use the app to adjust the speed of the sequence, the color temperature, and the fade-out delay.</p>`,
+                specTable: [
+                    { label: 'Sensor Type', value: 'Dual PIR Motion Sensors' },
+                    { label: 'LED Support', value: 'Addressable Strip (WS2812 etc)' },
+                    { label: 'Max Steps', value: 'Configurable up to 32 steps' },
+                    { label: 'Lighting Modes', value: 'Sequential, All-On, Breathing' },
+                    { label: 'Voltage Range', value: '12V / 24V DC compatible' }
+                ],
+                video: '_lnA8sC6zKE'
+            },
+            'rgbw': {
+                title: 'RGBW Controller', subtitle: 'Mood Lighting',
+                desc: 'Paint your home with 16 million colors. Control LED strips to create the perfect ambiance for movies, parties, or relaxation.',
+                img: 'assets/img/RGBcontroller.png',
+                specs: ['16 Million Colors', 'Music Sync', 'App Control', 'Voice Compatible', 'Dimmable'],
+                featuresContent: `<p>Unleash the painter of light in you. Our RGBW controllers do more than just change colors; they transform the entire atmosphere of your room to match your mood.</p><br><p><strong>Rhythm Sync:</strong> The built-in microphone pulses the lights exactly to the beat of your music, perfect for home parties.</p><br><p><strong>Circadian Rhythm:</strong> Automatically shift from cool white in the morning to a warm, relaxing amber by evening to promote better sleep.</p>`,
+                specTable: [
+                    { label: 'Color Output', value: '16 Million (RGB) + True White' },
+                    { label: 'Max Output Current', value: '4A per channel (16A Total)' },
+                    { label: 'Dimming Resolution', value: 'Ultra-smooth PMW (1000 steps)' },
+                    { label: 'Connectivity', value: 'WiFi 2.4GHz + BLE' },
+                    { label: 'Operating Voltage', value: '12V / 24V DC' }
+                ],
+                video: '_lnA8sC6zKE'
+            },
+            'wardrobe': {
+                title: 'Smart Wardrobe', subtitle: 'Luxury Series',
+                desc: 'Open your wardrobe to see it light up automatically. Dehumidifiers keep your clothes fresh.',
+                img: 'assets/img/WardrobeAutomation.png',
+                specs: ['Door Sensors', 'Auto Lighting', 'Dehumidifier Control', 'UV Sterilization', 'Soft Close'],
+                featuresContent: `<p>A premium touch for your walk-in closets. Enjoy flawless visibility and advanced garment care directly integrated into your cabinetry.</p><br><p><strong>Climate Control:</strong> Built-in humidity sensors automatically trigger micro-dehumidifiers to protect expensive fabrics from mold and odor.</p><br><p><strong>UV Sterilization:</strong> Activated safely only when doors are closed, destroying bacteria and musty smells from worn clothes.</p>`,
+                specTable: [
+                    { label: 'Lighting Trigger', value: 'Magnetic Contact / IR Sensor' },
+                    { label: 'Lighting Profile', value: 'High CRI (>95) soft diffuse' },
+                    { label: 'Humidity Threshold', value: 'App configurable (e.g. 60%)' },
+                    { label: 'Dehumidifier Load', value: 'Up to 5A' },
+                    { label: 'System Integration', value: 'Seamless with Smart Home App' }
+                ],
+                video: '_lnA8sC6zKE'
+            }
         };
 
         // LOAD CONTENT ON START
@@ -403,7 +483,7 @@
                 document.querySelector('.desc').textContent = data.desc;
                 document.querySelector('.main-img').src = data.img;
 
-                // Update Specs List
+                // Update Top Specs List
                 const specsList = document.querySelector('.specs-list');
                 specsList.innerHTML = ''; // Clear existing
                 data.specs.forEach(spec => {
@@ -411,6 +491,23 @@
                     li.innerHTML = `<i class="fas fa-check-circle"></i> ${spec}`;
                     specsList.appendChild(li);
                 });
+
+                // Update Features Tab
+                if (data.featuresContent) {
+                    document.getElementById('features-container').innerHTML = data.featuresContent;
+                }
+
+                // Update Specs Tab
+                const specsTable = document.getElementById('specs-table');
+                specsTable.innerHTML = '';
+                if (data.specTable) {
+                    data.specTable.forEach(item => {
+                        const tr = document.createElement('tr');
+                        tr.style.borderBottom = '1px solid #eee';
+                        tr.innerHTML = `<td style="padding: 10px; font-weight: 700;">${item.label}</td><td style="padding: 10px;">${item.value}</td>`;
+                        specsTable.appendChild(tr);
+                    });
+                }
 
                 // Update Video
                 document.querySelector('iframe').src = `https://www.youtube.com/embed/${data.video}`;

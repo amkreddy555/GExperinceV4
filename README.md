@@ -52,4 +52,4 @@ Experience the future of intelligent living here:
 -   **Email**: contact@gthinkinventors.in
 -   **WhatsApp**: [+91 99087 99084](https://wa.me/919908799084)
 
-© 2025 Gthink Inventors. Engineered for the Future.
+© 2026 Gthink Inventors. Engineered for the Future.
